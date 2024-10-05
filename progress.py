@@ -10,9 +10,12 @@ except:
     pass
 
 def new_time():
+    wherehou = int(input("Hol tartasz?(óra): "))
     wheremin = int(input("Hol tartasz?(perc): "))
     wheresec = int(input("Hol tartasz?(másodperc): "))
-    acttime = wheremin * 60 + wheresec
+    acttime0 = wherehou * 60 * 60
+    acttime1 = wheremin * 60 + wheresec
+    acttime = acttime0 + acttime1
     print(acttime)
     ins = cur.execute(f"DELETE FROM status")
     con.commit()
@@ -33,7 +36,6 @@ def open():
     url = f"https://www.youtube.com/watch?v=gyQyk80_upM&t={onlynum}"
     print("Megnyílt")
     webbrowser.open(url)
-    os.system("ctrl+c")
     
 def main():
     wich = input("Előző megnyitása(e) || Új idő hozzáadása(u)")
